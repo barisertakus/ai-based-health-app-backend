@@ -26,6 +26,11 @@ public class User extends Auditable<String>{
     private String username;
 
     @NotBlank
+    @Size(max = 40)
+    @Size(min = 2)
+    private String name;
+
+    @NotBlank
     @Size(max = 50)
     @Email
     private String email;
