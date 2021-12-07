@@ -67,7 +67,7 @@ public class AuthServiceImpl implements AuthService {
             return ResponseEntity.badRequest().body("Error : Email is already in use!");
         }
 
-        User user = new User(signupRequest.getUsername(), signupRequest.getEmail(),
+        User user = new User(signupRequest.getUsername(), signupRequest.getName(), signupRequest.getEmail(),
                 passwordEncoder.encode(signupRequest.getPassword()));
 
         List<Role> roles = new ArrayList<>();
