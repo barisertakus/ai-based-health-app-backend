@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,5 +60,12 @@ public class GoogleUserServiceImpl implements GoogleUserService {
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    @Override
+    public Boolean deleteByEmail(String email){
+       googleUserRepository.deleteByEmail(email);
+       return true;
     }
 }

@@ -36,4 +36,9 @@ public class GoogleUserController {
     public ResponseEntity<Boolean> updateTokenById(@RequestParam String id, String expoToken){
         return ResponseEntity.ok(googleUserService.updateTokenById(id, expoToken));
     }
+
+    @DeleteMapping("/deleteByEmail")
+    public ResponseEntity<Boolean> deleteByEmail(@RequestParam String email){
+        return ResponseEntity.ok(googleUserService.deleteByEmail(email));
+    }
 }
