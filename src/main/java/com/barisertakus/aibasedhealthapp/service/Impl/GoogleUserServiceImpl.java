@@ -24,10 +24,14 @@ public class GoogleUserServiceImpl implements GoogleUserService {
     }
 
     @Override
-    public Boolean saveUser(GoogleUserDTO googleUserDTO) {
-        GoogleUser googleUser = modelMapper.map(googleUserDTO, GoogleUser.class);
-        googleUserRepository.save(googleUser);
-        return true;
+    public GoogleUserDTO saveUser(GoogleUserDTO googleUserDTO) {
+        Boolean exists = googleUserRepository.existsByEmail(googleUserDTO.getEmail());
+        if(exists){
+            return googleUserDTO;
+        } else {
+            GoogleUser googleUser = modelMapper.map(googleUserDTO, GoogleUser.class); // to entity for save
+            return modelMapper.map(googleUserRepository.save(googleUser), GoogleUserDTO.class); // to DTO for response
+        }
     }
 
     @Override

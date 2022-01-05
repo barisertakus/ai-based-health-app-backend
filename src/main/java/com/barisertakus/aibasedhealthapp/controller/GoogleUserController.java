@@ -18,7 +18,7 @@ public class GoogleUserController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Boolean> saveUser(@RequestBody GoogleUserDTO googleUserDTO) {
+    public ResponseEntity<GoogleUserDTO> saveUser(@RequestBody GoogleUserDTO googleUserDTO) {
         return ResponseEntity.ok(googleUserService.saveUser(googleUserDTO));
     }
 
